@@ -7,9 +7,9 @@ You can see it as a way to set the default tab based on entity states.
 A common use-case is to put the card on the default view and have it redirecting you under some conditions.  
 
 For instance:
-- if sun is below_horizon you want the default view to be the tab controlling the light
-- but when you are outside, you want the default view to be tab with the cameras
-- rest of the time, the default view should be the regular default view (aka no redirect)
+- If sun is below_horizon you want the default view to be the tab controlling the lights
+- But when you are outside, you want the default view to be tab with the cameras
+- Rest of the time, the default view should be the regular default view (aka no redirect)
 
 ### Installation
 Use [HACS](https://hacs.xyz/) or follow this [guide](https://github.com/thomasloven/hass-config/wiki/Lovelace-Plugins)
@@ -21,7 +21,7 @@ resources:
 ```
 
 ### Configuration example:
-Note: `redirect_to_tab` starts at 0 (first tab)  
+Note: `redirect_to_tab_index` starts at 0 (first tab)  
 
  - Redirect user "foo" to the 2nd tab if `input.binary.is_home` is `on`:
 ```yaml
@@ -41,9 +41,10 @@ redirect:
  - user: 'foo'
    entity_id: 'input.binary.is_home'
    entity_state: 'on'
-   redirect_to_tab: 1
+   redirect_to_tab_index: 1
  - user: 'bar'
    entity_id: 'input.binary.is_home'
    entity_state: 'on'
    redirect_to_tab_index: 2
 ```
+N.B If using panel mode, your tab-redirect-cards must be positioned in the first row otherwise they won't work. Don't worry, the card/s won't be visible when you exit edit mode.
